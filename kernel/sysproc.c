@@ -7,6 +7,14 @@
 #include "proc.h"
 #include "vm.h"
 
+extern pagetable_t kernel_pagetable;
+
+uint64
+sys_getusedmem(void)
+{
+  return walk_used(kernel_pagetable) * PGSIZE;
+}
+
 uint64
 sys_exit(void)
 {

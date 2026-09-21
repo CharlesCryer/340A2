@@ -20,7 +20,7 @@ sub entry {
     print " ecall\n";
     print " ret\n";
 }
-	
+
 entry("fork");
 entry("exit");
 entry("wait");
@@ -46,3 +46,4 @@ entry("uptime");
 entry("getwaittime");
 entry("waitx");
 entry("execp");
+entry("getusedmem");
