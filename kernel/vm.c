@@ -114,6 +114,25 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
   return &pagetable[PX(0, va)];
 }
 
+int
+uvmprotect(pagetable_t pagetable, uint64 va, int writable)
+{
+  if(va % PGSIZE != 0 || va >= MAXVA)
+    return -1;
+
+  pte_t *pte = walk(pagetable, va, 0);
+  if(pte == 0 || (*pte & PTE_V) == 0 || (*pte & PTE_U) == 0)
+    return -1;
+
+  if(writable)
+    *pte |= PTE_W;
+  else
+    *pte &= ~PTE_W;
+
+  sfence_vma();
+  return 0;
+}
+
 // Look up a virtual address, return the physical address,
 // or 0 if not mapped.
 // Can only be used to look up user pages.

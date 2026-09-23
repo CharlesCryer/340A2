@@ -106,6 +106,8 @@ extern uint64 sys_getwaittime(void);
 extern uint64 sys_waitx(void);
 extern uint64 sys_execp(void);
 extern uint64 sys_getusedmem(void);
+extern uint64 sys_mprotect(void);
+extern uint64 sys_munprotect(void);
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -136,6 +138,8 @@ static uint64 (*syscalls[])(void) = {
 [SYS_waitx]   sys_waitx,
 [SYS_execp]   sys_execp,
 [SYS_getusedmem] sys_getusedmem,
+[SYS_mprotect] sys_mprotect,
+[SYS_munprotect] sys_munprotect
 };
 
 void

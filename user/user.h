@@ -25,6 +25,8 @@ char* sys_sbrk(int,int);
 int pause(int);
 int uptime(void);
 int getusedmem(void);
+uint64 mprotect(void*);
+uint64 munprotect(void*);
 
 // ulib.c
 int stat(const char*, struct stat*);

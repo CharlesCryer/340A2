@@ -10,6 +10,22 @@
 extern pagetable_t kernel_pagetable;
 
 uint64
+sys_mprotect(void)
+{
+  uint64 addr;
+  argaddr(0, &addr);
+  return uvmprotect(myproc()->pagetable, addr, 0);
+}
+
+uint64
+sys_munprotect(void)
+{
+  uint64 addr;
+  argaddr(0, &addr);
+  return uvmprotect(myproc()->pagetable, addr, 1);
+}
+
+uint64
 sys_getusedmem(void)
 {
   return walk_used(kernel_pagetable) * PGSIZE;

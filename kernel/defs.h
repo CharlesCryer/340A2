@@ -176,6 +176,7 @@ int             copyinstr(pagetable_t, char *, uint64, uint64);
 int             ismapped(pagetable_t, uint64);
 uint64          vmfault(pagetable_t, uint64, int);
 uint64          walk_used(pagetable_t);
+int             uvmprotect(pagetable_t, uint64, int);
 
 // plic.c
 void            plicinit(void);

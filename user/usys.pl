@@ -47,3 +47,5 @@ entry("getwaittime");
 entry("waitx");
 entry("execp");
 entry("getusedmem");
+entry("mprotect");
+entry("munprotect");
