@@ -12,5 +12,7 @@ main(int argc, char *argv[])
   munprotect(address);
   *address = 0x56;
   printf("%d\n", (int)(*address));
+  printf("%d\n", mprotect((void*)1));
+  printf("%d\n", mprotect((void*)0xffffffffff));
   exit(0);
 }
